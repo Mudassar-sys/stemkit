@@ -1,6 +1,6 @@
 # Testing
 
-The results table on this page is copied from the CI log of run https://github.com/Mudassar-sys/stemkit/actions/runs/37406170985 (commit 670b213, the last change to code and tests; later commits change documents only), on a GitHub-hosted `macos-latest` runner: macOS 26.6.2, Xcode 26.6 (build 17F113), Swift 6.3.3. Tests print their measurements on lines with a fixed prefix (`PARITY`, `MEL`, `DFT`, `FUZZ`, `FUZZ_DISK`, `SPARSE`, `BENCHMARK`, `SCREENSHOT`, `GUARD`, `DOUBLE`), and two CI steps print `CLI_SMOKE` and `SIGNATURE_CHECK`, so every figure can be found in the log by its prefix. Counts in the test list below (cases, bytes, sizes) come from the test sources.
+The results table on this page is copied from the CI log of run https://github.com/Mudassar-sys/stemkit/actions/runs/37406170985 (commit 670b213, the last change to code and tests; later commits change only documents and one comment in the workflow), on a GitHub-hosted `macos-latest` runner: macOS 26.6.2, Xcode 26.6 (build 17F113), Swift 6.3.3. Tests print their measurements on lines with a fixed prefix (`PARITY`, `MEL`, `DFT`, `FUZZ`, `FUZZ_DISK`, `SPARSE`, `BENCHMARK`, `SCREENSHOT`, `GUARD`, `DOUBLE`), and two CI steps print `CLI_SMOKE` and `SIGNATURE_CHECK`, so every figure can be found in the log by its prefix. Counts in the test list below (cases, bytes, sizes) come from the test sources.
 
 GitHub reports that the artifacts of the run named above expire on 2027-01-04. The figures this page quotes are copied into the table below so they outlive the logs.
 

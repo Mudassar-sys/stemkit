@@ -34,7 +34,7 @@ jobs:
         env:
           STEMKIT_SCREENSHOT_DIR: ${{ github.workspace }}/screenshots
           STEMKIT_DENIED_NAMES: ${{ secrets.STEMKIT_DENIED_NAMES }}
-          # The number of entries in the secret; a truncated or mistyped secret fails the step.
+          # The number of entries in the secret; a secret with a missing or extra entry fails the step.
           EXPECTED_DENIED_NAMES: "27"
         run: |
           set -o pipefail
