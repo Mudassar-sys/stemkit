@@ -111,7 +111,7 @@ Package tests (`swift test`), by suite:
 **Repository guards**
 - The scan covers the repository
 - No em dash anywhere
-- No client, company or person names (the list comes from the `STEMKIT_DENIED_NAMES` secret and is never printed; the test fails if the list is empty, see D-26)
+- No client, company or person names (the list comes from the `STEMKIT_DENIED_NAMES` secret and is never printed; the test fails if the list is empty, and CI checks the number of entries, see D-26)
 - No contact details
 - No statement of how long anything took
 - The guards detect planted samples and pass clean text (the same functions the scan uses, on samples built at run time)

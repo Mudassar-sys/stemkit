@@ -60,7 +60,7 @@ xcodebuild test -project App/StemInspector.xcodeproj -scheme StemInspector -dest
 open App/StemInspector.xcodeproj                    # run the app from Xcode
 ```
 
-The repository guard's name test reads its list from the `STEMKIT_DENIED_NAMES` environment variable, which CI fills from a repository secret, and fails when the variable is empty; for a local run, set it to the list or to any placeholder word.
+The repository guard's name test reads its list from the `STEMKIT_DENIED_NAMES` environment variable, which CI fills from a repository secret, and fails when the variable is empty. For a local run, set it to the list, read from a file rather than typed on the command line (so it stays out of the shell history), or, to skip the check, to a made-up word that appears nowhere in the repository.
 
 To regenerate the fixtures: `reference/export_metadata_golden.py` (needs the reference module, see [docs/SOURCES.md](docs/SOURCES.md)) and `reference/make_mel_fixtures.py` in a virtual environment built from `reference/requirements.txt` without torch.
 

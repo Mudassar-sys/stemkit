@@ -34,6 +34,8 @@ jobs:
         env:
           STEMKIT_SCREENSHOT_DIR: ${{ github.workspace }}/screenshots
           STEMKIT_DENIED_NAMES: ${{ secrets.STEMKIT_DENIED_NAMES }}
+          # The number of entries in the secret; a truncated or mistyped secret fails the step.
+          EXPECTED_DENIED_NAMES: "27"
         run: |
           set -o pipefail
           if [ -z "$STEMKIT_DENIED_NAMES" ]; then
@@ -42,7 +44,8 @@ jobs:
           fi
           mkdir -p "$STEMKIT_SCREENSHOT_DIR"
           swift test -c release -Xswiftc -enable-testing --skip-build 2>&1 | tee package-tests.log
-          grep -Eq "^GUARD denied_names=[1-9][0-9]*$" package-tests.log
+          grep -Eq "^GUARD denied_names=${EXPECTED_DENIED_NAMES}$" package-tests.log ||
+            { echo "The name guard did not report ${EXPECTED_DENIED_NAMES} names."; exit 1; }
           echo "Measurements:"
           grep -E "^(PARITY|MEL|DFT|FUZZ|FUZZ_DISK|SPARSE|BENCHMARK|SCREENSHOT|GUARD|DOUBLE) " package-tests.log || true
           shasum -a 256 screenshots/*.png

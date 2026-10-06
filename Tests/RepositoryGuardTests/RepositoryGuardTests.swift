@@ -131,7 +131,11 @@ struct RepositoryGuardTests {
         // Counts only: the names themselves are never printed.
         let count = Self.deniedNames.count
         let longEntries = Self.deniedNames.filter { $0.split(separator: " ").count > 2 }.count
+        // CI checks this line, so it is flushed on its own: when stdout is a pipe it is block
+        // buffered, and a flush in the middle of the line could let other output split it.
+        fflush(nil)
         print("GUARD denied_names=\(count)")
+        fflush(nil)
         #expect(count > 0, "STEMKIT_DENIED_NAMES is empty, so the name check cannot run")
         #expect(longEntries == 0, "\(longEntries) entries have more than two words and can never match")
         var hits: [String] = []
