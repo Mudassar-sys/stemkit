@@ -1,0 +1,111 @@
+{
+  "reference": "evalgate.metadata.flatten_metadata(read_metadata(path))",
+  "python": "3.13.7",
+  "files": [
+    {
+      "file": "corpus/controls/control01_pink_noise.wav",
+      "sha256": "5f8788f7a18994722bfe156324693402305020bb9c1d1a013bfa4543e8202a94",
+      "golden": "golden/controls/control01_pink_noise.json",
+      "golden_sha256": "356d7edd84b57b53dccc1ba37c473c4492e8e55ef34892ae4aa1105b24d68235",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/controls/control02_chord.wav",
+      "sha256": "2eb8e93b6e9131042337236a5a47f7b364b499bb11ab345230beb6b7fbb367ef",
+      "golden": "golden/controls/control02_chord.json",
+      "golden_sha256": "df35e729b7f83ebe0af43b34718b916446b196b3d62b925b547f7c3e504ea16f",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/controls/control03_clicks.wav",
+      "sha256": "05cf5909ebaaf4a312a008c45fbb38033f52607b0370522bd192bf8c473a5374",
+      "golden": "golden/controls/control03_clicks.json",
+      "golden_sha256": "b056a0e23a7d0a682a51c58e5c609dd671ae8c4f6b2cad158262fff100aca298",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/originals/stem01_log_sweep.wav",
+      "sha256": "3632d7b44e3c5d84fbe5591be52ff2bc0c39ac001bfb6b289b17962878e473a0",
+      "golden": "golden/originals/stem01_log_sweep.json",
+      "golden_sha256": "9c70dddaec11814e6a693a8ba1c70f5314253222a411055ade1a071fdc1f1cb4",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/originals/stem02_linear_sweep.wav",
+      "sha256": "c33aaf127be048e961261f40c87ae953a7ad92e290767dc659eba59533b39622",
+      "golden": "golden/originals/stem02_linear_sweep.json",
+      "golden_sha256": "ee41eb7510811f7839ccba82c7226125c6846cc8b743228fbcd3f702d987a8ce",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/originals/stem03_noise_bursts.wav",
+      "sha256": "0314abbc505661f85ff685bcc253b6306a2590a98314c8b8bdcc054b32e16e96",
+      "golden": "golden/originals/stem03_noise_bursts.json",
+      "golden_sha256": "b13d153016c45773b139eb7119b8ccef8fb2ab738019c412861b7d04d03542a1",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/originals/stem04_kick.wav",
+      "sha256": "1d760cf108912195c5dcb30133e867cf7f65cc5ab0f5fa0bbd4de5f82c0f387f",
+      "golden": "golden/originals/stem04_kick.json",
+      "golden_sha256": "65f9313915540a4cb962dd1dfacd19c0a484604214c8bc922a3fce79d1ed2b7c",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/originals/stem05_hats.wav",
+      "sha256": "4dcd19f7456a5641d259fec14aa0356f67644c3c9f6d7dd0e88f331d0812c028",
+      "golden": "golden/originals/stem05_hats.json",
+      "golden_sha256": "d9680684b1541f221bb3dbb48918a35ca2d9fcd9deca4eb28eee5ab143c69876",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/originals/stem06_tone.wav",
+      "sha256": "1c6113f7c28e774d4e8cb97bb75f7daffe947ad3febb854357b480cc014733fd",
+      "golden": "golden/originals/stem06_tone.json",
+      "golden_sha256": "ab3b579e6e4fa381e30018247acc6a78dfd1455d691d9e4843565b0bba1f8256",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/stems/stem01_log_sweep.wav",
+      "sha256": "8d493438dc03bec18e0ec43019d2d00b49b9e37eb2c8b31ae465134bfcccf9c5",
+      "golden": "golden/stems/stem01_log_sweep.json",
+      "golden_sha256": "9c70dddaec11814e6a693a8ba1c70f5314253222a411055ade1a071fdc1f1cb4",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/stems/stem02_linear_sweep.wav",
+      "sha256": "5d84e9100d6c854c50070c08eb1342903d05384e439600c12e4d1d381e7575a8",
+      "golden": "golden/stems/stem02_linear_sweep.json",
+      "golden_sha256": "ee41eb7510811f7839ccba82c7226125c6846cc8b743228fbcd3f702d987a8ce",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/stems/stem03_noise_bursts.wav",
+      "sha256": "eb465aaecf97623dbc71dceac27c5ac17c198018087a75d011d164a1f5ba71fa",
+      "golden": "golden/stems/stem03_noise_bursts.json",
+      "golden_sha256": "b13d153016c45773b139eb7119b8ccef8fb2ab738019c412861b7d04d03542a1",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/stems/stem04_kick.wav",
+      "sha256": "78d5d83c4d56f408106aab37ebec55fac52337c9ca1670eda29a579971db96be",
+      "golden": "golden/stems/stem04_kick.json",
+      "golden_sha256": "65f9313915540a4cb962dd1dfacd19c0a484604214c8bc922a3fce79d1ed2b7c",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/stems/stem05_hats.wav",
+      "sha256": "75776b9f3e097ece34cf16a5f666ad044571f59ab8d13d3eb1e5ee4ccf18624e",
+      "golden": "golden/stems/stem05_hats.json",
+      "golden_sha256": "d9680684b1541f221bb3dbb48918a35ca2d9fcd9deca4eb28eee5ab143c69876",
+      "field_count": 28
+    },
+    {
+      "file": "corpus/stems/stem06_tone.wav",
+      "sha256": "d9094692f1b239f9f2620a7801469fe38edfd57a02271451c376d7bbada23666",
+      "golden": "golden/stems/stem06_tone.json",
+      "golden_sha256": "ab3b579e6e4fa381e30018247acc6a78dfd1455d691d9e4843565b0bba1f8256",
+      "field_count": 28
+    }
+  ]
+}

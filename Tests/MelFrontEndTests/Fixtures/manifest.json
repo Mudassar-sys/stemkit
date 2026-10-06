@@ -1,0 +1,108 @@
+{
+  "reference": "transformers.WhisperFeatureExtractor() defaults, numpy path (torch not installed)",
+  "versions": {
+    "python": "3.13.7",
+    "numpy": "2.5.3",
+    "transformers": "5.18.0"
+  },
+  "parameters": {
+    "feature_size": 80,
+    "sampling_rate": 16000,
+    "hop_length": 160,
+    "chunk_length": 30,
+    "n_fft": 400
+  },
+  "input_scaling": "int16 / 32768 as float32",
+  "clips": [
+    {
+      "name": "sweep",
+      "input": "sweep.s16",
+      "input_sha256": "d64181085a3d7299821dac9c59d90c4d34bd1bcf1109e50842181a9f8c14b64b",
+      "input_samples": 64000,
+      "features": "sweep.f32",
+      "features_sha256": "c3e6ae71e707cb55c2b54f3a07de9ed447cc5654999544c7b867e8158d0e2bbd",
+      "shape": [
+        80,
+        3000
+      ],
+      "dtype": "float32 little-endian, row-major [mel][frame]",
+      "min": -0.5475558042526245,
+      "max": 1.4524441957473755
+    },
+    {
+      "name": "noise_bursts",
+      "input": "noise_bursts.s16",
+      "input_sha256": "48fe8b819d867c83393678b69e0b3e5c4b19a6cbbdfd4656d7ed9de45ff2637f",
+      "input_samples": 48000,
+      "features": "noise_bursts.f32",
+      "features_sha256": "2bf7f23f32e234f0e22e76a47b4e7abaca637c33630e7ae5cfcdb49e1defb211",
+      "shape": [
+        80,
+        3000
+      ],
+      "dtype": "float32 little-endian, row-major [mel][frame]",
+      "min": -0.9187570810317993,
+      "max": 1.0812429189682007
+    },
+    {
+      "name": "tones",
+      "input": "tones.s16",
+      "input_sha256": "c4d6c770c1d0aa41a9651c5871ffcd961a3f16e9fda391ff61960ec63a822870",
+      "input_samples": 32000,
+      "features": "tones.f32",
+      "features_sha256": "68357c821367cf63a068acee126dba1c5e3cecc6f1e2fb301bec9269a43cbf60",
+      "shape": [
+        80,
+        3000
+      ],
+      "dtype": "float32 little-endian, row-major [mel][frame]",
+      "min": -0.6727273464202881,
+      "max": 1.327272653579712
+    },
+    {
+      "name": "silence",
+      "input": "silence.s16",
+      "input_sha256": "0c92bddb4e96f3ea9ec9f0f64a668255a6c15527ac09f6f119cafde60c7c4a39",
+      "input_samples": 16000,
+      "features": "silence.f32",
+      "features_sha256": "4b777554af992aff759ca248bd261622ca21616649637ecc23ec5d4e94659a91",
+      "shape": [
+        80,
+        3000
+      ],
+      "dtype": "float32 little-endian, row-major [mel][frame]",
+      "min": -1.5,
+      "max": -1.5
+    },
+    {
+      "name": "short",
+      "input": "short.s16",
+      "input_sha256": "cf61abcf2fcc69804ae72e3884f1fb1f1c58a9471f24ad0ad673153f4bb9acf5",
+      "input_samples": 300,
+      "features": "short.f32",
+      "features_sha256": "dcbcb547a86d41da967d049e722c0960420541d9d2b7b2c4bb3294d82c317795",
+      "shape": [
+        80,
+        3000
+      ],
+      "dtype": "float32 little-endian, row-major [mel][frame]",
+      "min": -0.6158002614974976,
+      "max": 1.3841997385025024
+    },
+    {
+      "name": "longer_than_chunk",
+      "input": "longer_than_chunk.s16",
+      "input_sha256": "8ba8628fe3be4630d396e309b3cba5641bb87837c4945c21342d3d5ff5402034",
+      "input_samples": 560000,
+      "features": "longer_than_chunk.f32",
+      "features_sha256": "b56383e0df579f04b438e82760f8a9baff14959179fd79bba15931e65a980c71",
+      "shape": [
+        80,
+        3000
+      ],
+      "dtype": "float32 little-endian, row-major [mel][frame]",
+      "min": -0.5520869493484497,
+      "max": 1.2622966766357422
+    }
+  ]
+}

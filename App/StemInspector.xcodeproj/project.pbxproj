@@ -1,0 +1,369 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A0000000000000000000101 /* StemInspectorCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0000000000000000000301 /* StemInspectorCore */; };
+		5A0000000000000000000102 /* StemInspectorUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0000000000000000000302 /* StemInspectorUI */; };
+		5A0000000000000000000103 /* StemInspectorCore in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0000000000000000000303 /* StemInspectorCore */; };
+		5A0000000000000000000104 /* WaveContainer in Frameworks */ = {isa = PBXBuildFile; productRef = 5A0000000000000000000304 /* WaveContainer */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5A0000000000000000000201 /* StemInspector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StemInspector.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A0000000000000000000202 /* StemInspectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StemInspectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5A0000000000000000000401 /* StemInspector */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = StemInspector;
+			sourceTree = "<group>";
+		};
+		5A0000000000000000000402 /* StemInspectorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = StemInspectorTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5A0000000000000000000501 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A0000000000000000000101 /* StemInspectorCore in Frameworks */,
+				5A0000000000000000000102 /* StemInspectorUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A0000000000000000000502 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A0000000000000000000103 /* StemInspectorCore in Frameworks */,
+				5A0000000000000000000104 /* WaveContainer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5A0000000000000000000601 = {
+			isa = PBXGroup;
+			children = (
+				5A0000000000000000000401 /* StemInspector */,
+				5A0000000000000000000402 /* StemInspectorTests */,
+				5A0000000000000000000602 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5A0000000000000000000602 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A0000000000000000000201 /* StemInspector.app */,
+				5A0000000000000000000202 /* StemInspectorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5A0000000000000000000701 /* StemInspector */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A0000000000000000000902 /* Build configuration list for PBXNativeTarget "StemInspector" */;
+			buildPhases = (
+				5A0000000000000000000801 /* Sources */,
+				5A0000000000000000000501 /* Frameworks */,
+				5A0000000000000000000802 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5A0000000000000000000401 /* StemInspector */,
+			);
+			name = StemInspector;
+			packageProductDependencies = (
+				5A0000000000000000000301 /* StemInspectorCore */,
+				5A0000000000000000000302 /* StemInspectorUI */,
+			);
+			productName = StemInspector;
+			productReference = 5A0000000000000000000201 /* StemInspector.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5A0000000000000000000702 /* StemInspectorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A0000000000000000000903 /* Build configuration list for PBXNativeTarget "StemInspectorTests" */;
+			buildPhases = (
+				5A0000000000000000000803 /* Sources */,
+				5A0000000000000000000502 /* Frameworks */,
+				5A0000000000000000000804 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5A0000000000000000000402 /* StemInspectorTests */,
+			);
+			name = StemInspectorTests;
+			packageProductDependencies = (
+				5A0000000000000000000303 /* StemInspectorCore */,
+				5A0000000000000000000304 /* WaveContainer */,
+			);
+			productName = StemInspectorTests;
+			productReference = 5A0000000000000000000202 /* StemInspectorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A0000000000000000000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					5A0000000000000000000701 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+					5A0000000000000000000702 = {
+						CreatedOnToolsVersion = 26.0;
+					};
+				};
+			};
+			buildConfigurationList = 5A0000000000000000000901 /* Build configuration list for PBXProject "StemInspector" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5A0000000000000000000601;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5A0000000000000000000B01 /* XCLocalSwiftPackageReference ".." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5A0000000000000000000602 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5A0000000000000000000701 /* StemInspector */,
+				5A0000000000000000000702 /* StemInspectorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5A0000000000000000000802 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A0000000000000000000804 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A0000000000000000000801 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5A0000000000000000000803 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5A0000000000000000000A01 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		5A0000000000000000000A02 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Manual;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		5A0000000000000000000A03 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StemInspector/StemInspector.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Stem Inspector";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = invalid.stemkit.StemInspector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Debug;
+		};
+		5A0000000000000000000A04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StemInspector/StemInspector.entitlements;
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Stem Inspector";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = invalid.stemkit.StemInspector;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Release;
+		};
+		5A0000000000000000000A05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = invalid.stemkit.StemInspectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Debug;
+		};
+		5A0000000000000000000A06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = invalid.stemkit.StemInspectorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5A0000000000000000000901 /* Build configuration list for PBXProject "StemInspector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A0000000000000000000A01 /* Debug */,
+				5A0000000000000000000A02 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A0000000000000000000902 /* Build configuration list for PBXNativeTarget "StemInspector" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A0000000000000000000A03 /* Debug */,
+				5A0000000000000000000A04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A0000000000000000000903 /* Build configuration list for PBXNativeTarget "StemInspectorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5A0000000000000000000A05 /* Debug */,
+				5A0000000000000000000A06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		5A0000000000000000000B01 /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A0000000000000000000301 /* StemInspectorCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StemInspectorCore;
+		};
+		5A0000000000000000000302 /* StemInspectorUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StemInspectorUI;
+		};
+		5A0000000000000000000303 /* StemInspectorCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StemInspectorCore;
+		};
+		5A0000000000000000000304 /* WaveContainer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WaveContainer;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5A0000000000000000000001 /* Project object */;
+}

@@ -1,0 +1,155 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Package build and tests
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Toolchain
+        run: |
+          sw_vers
+          xcodebuild -version
+          swift --version
+
+      # Release configuration with testing enabled: the 4 GiB integrity hashes and the fuzz
+      # loops run optimised, and `@testable import` still works.
+      - name: Build package and tests
+        run: swift build -c release -Xswiftc -enable-testing --build-tests
+
+      # The list of names for the repository guard comes from a repository secret, so the
+      # repository does not contain it in any form. Without it the step stops before testing.
+      - name: Run package tests
+        env:
+          STEMKIT_SCREENSHOT_DIR: ${{ github.workspace }}/screenshots
+          STEMKIT_DENIED_NAMES: ${{ secrets.STEMKIT_DENIED_NAMES }}
+        run: |
+          set -o pipefail
+          if [ -z "$STEMKIT_DENIED_NAMES" ]; then
+            echo "The STEMKIT_DENIED_NAMES secret is not available; the name guard cannot run."
+            exit 1
+          fi
+          mkdir -p "$STEMKIT_SCREENSHOT_DIR"
+          swift test -c release -Xswiftc -enable-testing --skip-build 2>&1 | tee package-tests.log
+          grep -Eq "^GUARD denied_names=[1-9][0-9]*$" package-tests.log
+          echo "Measurements:"
+          grep -E "^(PARITY|MEL|DFT|FUZZ|FUZZ_DISK|SPARSE|BENCHMARK|SCREENSHOT|GUARD|DOUBLE) " package-tests.log || true
+          shasum -a 256 screenshots/*.png
+
+      - name: Command line smoke test
+        run: |
+          set -euo pipefail
+          BIN="$(swift build -c release -Xswiftc -enable-testing --show-bin-path)/stemkit"
+          SRC=Tests/WaveContainerTests/Fixtures/corpus/stems/stem01_log_sweep.wav
+          OTHER=Tests/WaveContainerTests/Fixtures/corpus/stems/stem06_tone.wav
+          cp "$SRC" "$RUNNER_TEMP/edit.wav"
+          "$BIN" inspect "$SRC" --json > inspect.json
+          "$BIN" set "$RUNNER_TEMP/edit.wav" bext.description "Edited by the CI smoke test" > set.json
+          "$BIN" inspect "$RUNNER_TEMP/edit.wav" --json > inspect-edited.json
+          "$BIN" verify "$SRC" "$RUNNER_TEMP/edit.wav"
+          set +e
+          "$BIN" verify "$SRC" "$OTHER"
+          code=$?
+          set -e
+          test "$code" -eq 1
+          python3 - <<'PY'
+          import json
+          before = json.load(open("inspect.json"))
+          edited = json.load(open("inspect-edited.json"))
+          report = json.load(open("set.json"))
+          assert report["audio_unchanged"] is True, report
+          assert report["write_path"] == "in-place", report
+          assert edited["metadata"]["bext.description"] == "Edited by the CI smoke test"
+          assert edited["data_sha256"] == before["data_sha256"]
+          changed = {k for k in before["metadata"] if before["metadata"][k] != edited["metadata"].get(k)}
+          assert changed == {"bext.description"}, changed
+          print("CLI_SMOKE ok write_path=%s data_sha256=%s" % (report["write_path"], edited["data_sha256"]))
+          PY
+
+      - name: Upload package test log
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: package-test-log
+          path: package-tests.log
+          if-no-files-found: warn
+
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: screenshots
+          path: screenshots/*.png
+          if-no-files-found: error
+
+  app:
+    name: App build and tests
+    runs-on: macos-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          xcodebuild -list -project App/StemInspector.xcodeproj
+          echo "Export options keys used by docs/RELEASE.md:"
+          xcodebuild -help 2>&1 | grep -E -A 3 "^[[:space:]]+(method|teamID|signingStyle|signingCertificate)[[:space:]]" || true
+
+      # Signing identity "-" is ad hoc signing ("Sign to Run Locally"): no certificate or
+      # developer account, but the entitlements and the hardened runtime flag are embedded,
+      # so the sandbox configuration below is checked on the real build product.
+      - name: Build the app
+        run: |
+          set -o pipefail
+          xcodebuild build -project App/StemInspector.xcodeproj -scheme StemInspector -configuration Release             -destination 'platform=macOS' -derivedDataPath DerivedData 2>&1 | tee app-build.log | tail -n 25
+
+      - name: Check signature, sandbox and hardened runtime
+        run: |
+          set -euo pipefail
+          APP=DerivedData/Build/Products/Release/StemInspector.app
+          codesign -d --entitlements - --xml "$APP" | plutil -convert xml1 -o - - | tee entitlements.xml
+          codesign -d -vv "$APP" 2>&1 | tee signature.txt
+          plutil -convert json -o embedded.json entitlements.xml
+          plutil -convert json -o committed.json App/StemInspector/StemInspector.entitlements
+          python3 - <<'PY'
+          import json
+          embedded = json.load(open("embedded.json"))
+          committed = json.load(open("committed.json"))
+          expected = {"com.apple.security.app-sandbox": True, "com.apple.security.files.user-selected.read-write": True}
+          print("embedded entitlements:", embedded)
+          assert committed == expected, committed
+          assert embedded == expected, embedded
+          PY
+          grep -Eq "flags=0x[0-9a-f]+\(.*runtime.*\)" signature.txt
+          echo "SIGNATURE_CHECK ok"
+
+      - name: Run app unit tests
+        run: |
+          set -o pipefail
+          xcodebuild test -project App/StemInspector.xcodeproj -scheme StemInspector -configuration Debug             -destination 'platform=macOS' -derivedDataPath DerivedData 2>&1 | tee app-tests.log | grep -E "(Test|Suite) .*(passed|failed)|Test run with|TEST (SUCCEEDED|FAILED)|error:" || true
+          grep -q "TEST SUCCEEDED" app-tests.log
+          grep -Eq "Test run with [1-9][0-9]* tests" app-tests.log
+
+      - name: Upload app logs
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: app-logs
+          path: |
+            app-build.log
+            app-tests.log
+            entitlements.xml
+            signature.txt
+          if-no-files-found: warn

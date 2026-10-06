@@ -1,0 +1,4 @@
+# Pinned versions for reference/make_mel_fixtures.py. torch must NOT be installed:
+# without it transformers uses its numpy implementation, which is the reference.
+transformers==5.18.0
+numpy==2.5.3
