@@ -10,7 +10,7 @@ A `stemkit` command line tool exposes the container library: `inspect <file> --j
 
 ## Results measured on CI
 
-From CI run 37400549002 on main, the run of the last change to code and tests ([log lines and link in docs/TESTING.md](docs/TESTING.md)). Runner: GitHub-hosted `macos-latest` (macOS 26.6.2, Xcode 26.6, Swift 6.3.3).
+From CI run 37406170985 on main, the run of the last change to code and tests ([log lines and link in docs/TESTING.md](docs/TESTING.md)). Runner: GitHub-hosted `macos-latest` (macOS 26.6.2, Xcode 26.6, Swift 6.3.3).
 
 | What | Result |
 |---|---|
@@ -22,11 +22,11 @@ From CI run 37400549002 on main, the run of the last change to code and tests ([
 | Command line smoke test (inspect, set, verify) | Passed: the edit went in place, only `bext.description` changed, the data hash was unchanged, `verify` told same and different audio apart |
 | App: build, sandbox and hardened runtime check, unit tests | Release build signed ad hoc with flags `adhoc,runtime`; embedded entitlements exactly App Sandbox and user-selected read-write; 14 unit tests passed |
 | Package tests | 49 tests in 14 suites passed |
-| Mel benchmark on the runner (reported, not gated) | 215,085 mel frames per second (71.70 thirty-second chunks per second) in this run; across the fourteen runs that printed it, 105,720 to 268,006, depending on the runner |
+| Mel benchmark on the runner (reported, not gated) | 103,971 mel frames per second (34.66 thirty-second chunks per second) in this run; over the fifteen runs of the previous repository that printed it ([D-25](docs/DECISIONS.md)), 105,720 to 268,006, depending on the runner |
 
 ## Screenshots
 
-Rendered by a test on the CI runner from real files loaded through the real file worker; two files were edited and saved, so their badges are real. These are the exact artifact files of run 37400549002 (SHA-256 in [docs/TESTING.md](docs/TESTING.md)). The view is rendered in a borderless window, so the window's toolbar is not in the image.
+Rendered by a test on the CI runner from real files loaded through the real file worker; two files were edited and saved, so their badges are real. These are the exact artifact files of run 37406170985 (SHA-256 in [docs/TESTING.md](docs/TESTING.md)). The view is rendered in a borderless window, so the window's toolbar is not in the image.
 
 ![Stem Inspector, light appearance](docs/screenshots/stem-inspector-light.png)
 

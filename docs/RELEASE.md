@@ -16,7 +16,7 @@ Source: [Creating distribution-signed code for macOS](https://developer.apple.co
 
 ## 2. Build and sign with the hardened runtime
 
-For an app built with Xcode, Apple's page gives this route: archive with `xcodebuild archive`, then export a distribution-signed copy with `xcodebuild -exportArchive` and an export options property list. The page points to `xcodebuild -help` for the supported keys. The values below are the ones that help text lists on the CI runner's Xcode 26.6 (printed in the app job's Toolchain step of run 37400549002, and of every run since 37385637470): `method` `developer-id`, `signingStyle` `manual` (this project signs manually), `signingCertificate` with the automatic selector `Developer ID Application`, and `teamID`. Save this as `ExportOptions.plist`, with the team's ID in place of `YOUR_TEAM_ID`:
+For an app built with Xcode, Apple's page gives this route: archive with `xcodebuild archive`, then export a distribution-signed copy with `xcodebuild -exportArchive` and an export options property list. The page points to `xcodebuild -help` for the supported keys. The values below are the ones that help text lists on the CI runner's Xcode 26.6 (printed in the app job's Toolchain step of run 37406170985): `method` `developer-id`, `signingStyle` `manual` (this project signs manually), `signingCertificate` with the automatic selector `Developer ID Application`, and `teamID`. Save this as `ExportOptions.plist`, with the team's ID in place of `YOUR_TEAM_ID`:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

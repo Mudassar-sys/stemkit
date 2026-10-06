@@ -1,6 +1,6 @@
 # Testing
 
-The results table on this page is copied from the CI log of run https://github.com/Mudassar-sys/stemkit/actions/runs/37400549002 (commit 9ae0e0a, the last change to code and tests; later commits change documents only), on a GitHub-hosted `macos-latest` runner: macOS 26.6.2, Xcode 26.6 (build 17F113), Swift 6.3.3. Tests print their measurements on lines with a fixed prefix (`PARITY`, `MEL`, `DFT`, `FUZZ`, `FUZZ_DISK`, `SPARSE`, `BENCHMARK`, `SCREENSHOT`, `GUARD`, `DOUBLE`), and two CI steps print `CLI_SMOKE` and `SIGNATURE_CHECK`, so every figure can be found in the log by its prefix. Counts in the test list below (cases, bytes, sizes) come from the test sources.
+The results table on this page is copied from the CI log of run https://github.com/Mudassar-sys/stemkit/actions/runs/37406170985 (commit 670b213, the last change to code and tests; later commits change documents only), on a GitHub-hosted `macos-latest` runner: macOS 26.6.2, Xcode 26.6 (build 17F113), Swift 6.3.3. Tests print their measurements on lines with a fixed prefix (`PARITY`, `MEL`, `DFT`, `FUZZ`, `FUZZ_DISK`, `SPARSE`, `BENCHMARK`, `SCREENSHOT`, `GUARD`, `DOUBLE`), and two CI steps print `CLI_SMOKE` and `SIGNATURE_CHECK`, so every figure can be found in the log by its prefix. Counts in the test list below (cases, bytes, sizes) come from the test sources.
 
 GitHub reports that the artifacts of the run named above expire on 2027-01-04. The figures this page quotes are copied into the table below so they outlive the logs.
 
@@ -11,7 +11,7 @@ GitHub reports that the artifacts of the run named above expire on 2027-01-04. T
 - **Package build and tests**: `swift build` and `swift test` in the release configuration with testing enabled, with the name list for the repository guard passed from a repository secret (the step stops if the secret is not available); a command line smoke test (`inspect`, `set`, `verify` on a corpus file, with the JSON output checked by a short Python script); the log and the screenshots are uploaded as artifacts.
 - **App build and tests**: `xcodebuild build` of the app (Release, ad hoc signed), a check of the embedded entitlements and the hardened runtime flag with `codesign`, then `xcodebuild test` of the app's unit tests.
 
-## Results of run 37400549002 (last code change)
+## Results of run 37406170985 (last code change)
 
 | Measurement | Value from the log |
 |---|---|
@@ -24,9 +24,9 @@ GitHub reports that the artifacts of the run named above expire on 2027-01-04. T
 | Sparse RF64 | `SPARSE RF64 logical_bytes=4294970158 allocated_bytes=20480`, `SPARSE RF64 data_sha256=282ed140bf44705b8c3d6318b0d38ba30b9bd0e7491feb6165fafd441b37b0a4` |
 | Sparse BW64 | `SPARSE BW64 logical_bytes=4294970158 allocated_bytes=20480`, same data hash |
 | Double rounding example | `DOUBLE 1.005*100=100.49999999999999` |
-| Benchmark (not gated) | `BENCHMARK mel_frames_per_second=215085 chunks_per_second=71.70`; the fourteen runs that printed it ranged from 105720 (run 37385637470) to 268006 (run 37379753362), so it depends on the runner |
+| Benchmark (not gated) | `BENCHMARK mel_frames_per_second=103971 chunks_per_second=34.66`; the fifteen runs of the previous repository that printed it (D-25) ranged from 105720 (run 37385637470) to 268006 (run 37379753362), so it depends on the runner |
 | Command line smoke test | `CLI_SMOKE ok write_path=in-place data_sha256=cd664de2c017b111226206eff0a8b507456da41f63a50d031b9302ed9ba54067` |
-| Repository guards | `GUARD text_files_scanned=63` |
+| Repository guards | `GUARD text_files_scanned=63`, `GUARD denied_names=27` (a count only; the names are never printed) |
 | Package tests | `Test run with 49 tests in 14 suites passed` |
 | App signature | `flags=0x10002(adhoc,runtime)`, `SIGNATURE_CHECK ok` |
 | App entitlements | `embedded entitlements: {'com.apple.security.files.user-selected.read-write': True, 'com.apple.security.app-sandbox': True}` |
@@ -140,4 +140,4 @@ App unit tests (`xcodebuild test`, no disk, an in-memory file service):
 |---|---|---|
 | 15 corpus WAV files and their golden JSON | `reference/export_metadata_golden.py` with the Python reference module | `Tests/WaveContainerTests/Fixtures/manifest.json` (SHA-256 of every WAV and JSON) |
 | 6 mel clips (16-bit inputs, float32 features 80 x 3000) | `reference/make_mel_fixtures.py`, transformers 5.18.0, numpy 2.5.3, Python 3.13.7, torch absent | `Tests/MelFrontEndTests/Fixtures/manifest.json` (versions, parameters, SHA-256, shapes) |
-| Screenshots | the Screenshots test on CI | SHA-256 above; the files in `docs/screenshots/` were downloaded from the `screenshots` artifact of the run named at the top and committed unchanged (same SHA-256). The images changed once more in that run, because round 6 added a Revert button to the inspector; before that, every run from 37379279062 to 37399666190 printed the same two digests, so the render is repeatable. |
+| Screenshots | the Screenshots test on CI | SHA-256 above; the files in `docs/screenshots/` were downloaded from the `screenshots` artifact of the run named at the top and committed unchanged (same SHA-256). The last two runs of the previous repository (37400549002 and 37400956469, D-25) printed the same two digests from the same view code, so the render is repeatable. |
